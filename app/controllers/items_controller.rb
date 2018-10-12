@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.user = current_user
 
+
     if @item.save
       flash[:notice] = "To-Do item was saved."
       redirect_to root_path
@@ -20,7 +21,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
-    # @item = Item.find_by(id: session[:user_id])
+    
     unless @item.destroy
       flash.now[:alert] = "Error occured while deleting the To-Do."
     end
