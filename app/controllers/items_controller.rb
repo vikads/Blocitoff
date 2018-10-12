@@ -18,6 +18,16 @@ class ItemsController < ApplicationController
 
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    # @item = Item.find_by(id: session[:user_id])
+    unless @item.destroy
+      flash.now[:alert] = "Error occured while deleting the To-Do."
+    end
+    redirect_to root_path
+  end
+
+
   private
 
   def item_params
