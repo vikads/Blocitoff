@@ -21,11 +21,12 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
-    
+
     unless @item.destroy
       flash.now[:alert] = "Error occured while deleting the To-Do."
     end
-    redirect_to root_path
+
+    @items = current_user.items
   end
 
 
