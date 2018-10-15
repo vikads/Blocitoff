@@ -1,0 +1,48 @@
+<div class="container">
+
+  <div class="row heading">
+    <div class="col-md-12">
+      <h2> You are
+        <strong><%= current_user.email %></strong> <br>
+      </h2>
+      <small>
+        signed in  <%= time_ago_in_words(current_user.current_sign_in_at) %> ago. <br>
+      </small>
+    </div>
+  </div>
+
+
+  <div class="row-content">
+
+    <div class="col-md-12">
+      <h2> Profile details </h2> <br>
+      <ul>
+        <li><p> You've been our user since <%= current_user.created_at %>.</p></li>
+        <li><p> Your last visit was <%= time_ago_in_words(current_user.last_sign_in_at)%> ago.<p></li>
+        <li><p> You've been with us  <%= current_user.sign_in_count %> times :))<p></li>
+        <li><p> Your current sign in ip is <%= current_user.last_sign_in_ip %><p></li>
+      </ul>
+    <div>
+
+    <div class="col-md-4">
+      <%= link_to "Edit profile here", edit_user_registration_path, :class => 'btn btn-success' %>
+    <div>
+  </div>
+
+
+
+</div>
+
+
+<!-- t.datetime "remember_created_at"
+t.integer  "sign_in_count",          default: 0,  null: false
+t.datetime "current_sign_in_at"
+t.datetime "last_sign_in_at"
+t.string   "current_sign_in_ip"
+t.string   "last_sign_in_ip"
+t.string   "confirmation_token"
+t.datetime "confirmed_at"
+t.datetime "confirmation_sent_at"
+t.string   "unconfirmed_email"
+t.datetime "created_at",                          null: false
+t.datetime "updated_at",                          null: false -->
