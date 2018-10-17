@@ -3,7 +3,7 @@
 
   <div class="row">
 
-    <div class="col-md-8">
+    <!-- <div class="col-md-8">
       <div class="media">
         <ol>
           <% @items.each do |item| %>
@@ -17,5 +17,30 @@
 
       </div>
     </div>
+  </div> -->
+  <!-- <div class="col-md-8"> -->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+      <!-- <th>#</th> -->
+      <th scope="col">Item</th>
+      <th scope="col">Done</th>
+      <th scope="col">Time left</th>
+    </tr>
+    </thead>
+
+    <tbody>
+      <% if @user == current_user %>
+          <% @items.each do |item| %>
+          <tr>
+            <td><%= item.name %></td>
+            <td><%= link_to "", [current_user, item], remote: true, method: :delete, class: 'glyphicon glyphicon-ok' %></td>
+            <td><%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %></td>
+            <% end %>
+          </tr>
+      <% end %>
+    <tbody>
+
+  </table>
   </div>
 </div>

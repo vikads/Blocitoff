@@ -32,7 +32,9 @@
 
 
     <div class="col-md-6">
-      <%= render partial: 'items/item', locals: { items: @item } %>
+      <div>
+        <%= render partial: 'items/item', locals: { item: @item } %>
+      </div>
 
       <div class="col-md-4">
         <%= link_to "Create To-Do here", new_user_item_path(current_user), :class => 'btn btn-success' %>
