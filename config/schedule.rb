@@ -20,6 +20,6 @@
 # Learn more: http://github.com/javan/whenever
 set :environment, "development"
 
-every :day, at: '06:20pm' do
+every :day, at: '11:00am' do
   rake "todo:delete_items"
 end
