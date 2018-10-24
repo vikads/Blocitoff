@@ -1,21 +1,21 @@
-<h2>To-Do list</h2>
+<div id="items-container">
+  <h2>To-Do list</h2>
 
-<div class="row">
+  <div class="row">
 
-  <div class="col-md-8">
-    <div class="media">
-      <ol>
-        <% @items.each do |item| %>
-          <li>
-            <%= item.name %>
-            <%= link_to "", [current_user, item], remote: true, method: :delete, class: 'glyphicon glyphicon-ok' %>
-            <%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %> time left.
-          </li>
-          <% end %>
-      </ol>
+    <div class="col-md-8">
+      <div class="media">
+        <ol>
+          <% @items.each do |item| %>
+            <li>
+              <%= item.name %>
+              <%= link_to "", [current_user, item], remote: true, method: :delete, class: 'glyphicon glyphicon-ok' %>
+              <%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %> time left.
+            </li>
+            <% end %>
+        </ol>
 
+      </div>
     </div>
   </div>
-
-
 </div>
