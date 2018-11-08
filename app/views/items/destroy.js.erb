@@ -1,1 +1,7 @@
-$("#items-container").html("<%= j render "items/item" %>");
+// $("#items-container").html("<%= j render "items/item" %>");
+
+ $("#item-<%= @item.id %>").click(function () {
+   blocmetrics.report('To-Do completed clicked');
+    });
+
+ $("#item-<%= @item.id %>").remove();

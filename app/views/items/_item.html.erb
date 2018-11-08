@@ -3,21 +3,7 @@
 
   <div class="row">
 
-    <!-- <div class="col-md-8">
-      <div class="media">
-        <ol>
-          <% @items.each do |item| %>
-            <li>
-              <%= item.name %>
-              <%= link_to "", [current_user, item], remote: true, method: :delete, class: 'glyphicon glyphicon-ok' %>
-              <%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %> time left.
-            </li>
-            <% end %>
-        </ol>
 
-      </div>
-    </div>
-  </div> -->
   <!-- <div class="col-md-8"> -->
   <table class="table table-hover">
     <thead>
@@ -32,10 +18,14 @@
     <tbody>
       <% if @user == current_user %>
           <% @items.each do |item| %>
-          <tr>
+          <tr id=<%= "item-#{item.id}"%>>
             <td><%= item.name %></td>
-            <td><%= link_to "", [current_user, item], remote: true, method: :delete, class: 'glyphicon glyphicon-ok' %></td>
-            <td><%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %></td>
+            <td><%= link_to "", [current_user, item], remote: true, method: :delete, class: 'glyphicon glyphicon-ok', onclick: "blocmetrics.report('To-Do completed clicked')" %></td>
+              <% if expired?(item) %>
+                <td>EXPIRED</td>
+              <% else %>
+                <td><%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %></td>
+              <% end %>
             <% end %>
           </tr>
       <% end %>
@@ -44,3 +34,7 @@
   </table>
   </div>
 </div>
+
+<script>
+    blocmetrics.report('To-do added/completed');
+</script>
